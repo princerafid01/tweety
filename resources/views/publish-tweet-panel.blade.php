@@ -6,6 +6,7 @@
             name="body"
             class="w-full"
             placeholder="What's up doc?"
+
         ></textarea>
 
         <hr class="my-4">
