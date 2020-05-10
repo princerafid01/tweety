@@ -24,12 +24,13 @@ class ProfileController extends Controller
             'username' => ['string', 'required','max:255', 'alpha_dash',Rule::unique('users')->ignore($user)],
             'name' => ['string', 'required','max:255' ],
             'email' => ['string', 'required','email' , 'max:255' ,Rule::unique('users')->ignore($user)],
-            'avatar' => ['file', 'required'],
+            'avatar' => ['file'],
             'password' => ['string', 'required','min:8','max:255', 'confirmed'],
         ]);
 
-       $attributes['avatar'] = request('avatar')->store('avatars');
-
+       if (request('avatar')) {
+           $attributes['avatar'] = request('avatar')->store('avatars');
+       }
        $user->update($attributes);
 
        return redirect($user->path());
