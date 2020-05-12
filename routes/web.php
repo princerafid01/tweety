@@ -22,6 +22,10 @@ Route::middleware('auth')->group(function(){
     Route::post('/tweets','TweetController@store');
     Route::post('/profiles/{user:username}/follow','FollowController@store')->name('follow');
 
+     Route::post('/tweets/{tweet}/like','TweetLikesController@store');
+     Route::delete('/tweets/{tweet}/like','TweetLikesController@destroy');
+
+
     Route::get('/profiles/{user:username}/edit','ProfileController@edit')->middleware('can:edit,user');
     Route::patch('/profiles/{user:username}','ProfileController@update')->middleware('can:edit,user');
     Route::get('/explore', 'ExploreController');
