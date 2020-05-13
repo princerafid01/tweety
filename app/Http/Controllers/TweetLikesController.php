@@ -9,14 +9,22 @@ class TweetLikesController extends Controller
 {
     public function store(Tweet $tweet)
     {
-        $tweet->like(current_user());
+        if($tweet->isLikedBy(current_user())){
+            $tweet->likes()->where('user_id', auth()->id())->delete();
+        } else {
+            $tweet->like(current_user());
+        }
 
         return back();
     }
 
     public function destroy(Tweet $tweet)
     {
-        $tweet->dislike(current_user());
+        if($tweet->isDisLikedBy(current_user())){
+            $tweet->likes()->where('user_id', auth()->id())->delete();
+        } else {
+            $tweet->dislike(current_user());
+        }
 
         return back();
     }

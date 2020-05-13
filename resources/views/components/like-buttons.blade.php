@@ -4,9 +4,12 @@
     >
         @csrf
 
-        <div class="flex items-center mr-4 {{ $tweet->isLikedBy(current_user()) ? 'text-blue-500' : 'text-gray-500' }}">
+        <div class="flex items-center  mr-4 {{ $tweet->isLikedBy(current_user()) ? 'text-blue-500' : 'text-gray-500' }}">
+            <button type="submit"
+                    class="text-xs flex items-center"
+            >
             <svg viewBox="0 0 20 20"
-                 class="mr-1 w-3"
+                class="mr-1 w-3"
             >
                 <g id="Page-1"
                    stroke="none"
@@ -22,9 +25,7 @@
                 </g>
             </svg>
 
-            <button type="submit"
-                    class="text-xs"
-            >
+
                 {{ $tweet->likes ?: 0 }}
             </button>
         </div>
@@ -37,6 +38,9 @@
         @method('DELETE')
 
         <div class="flex items-center {{ $tweet->isDislikedBy(current_user()) ? 'text-blue-500' : 'text-gray-500' }}">
+            <button type="submit"
+                    class="text-xs flex items-center"
+            >
             <svg viewBox="0 0 20 20"
                  class="mr-1 w-3"
             >
@@ -54,9 +58,7 @@
                 </g>
             </svg>
 
-            <button type="submit"
-                    class="text-xs"
-            >
+
                 {{ $tweet->dislikes ?: 0 }}
             </button>
         </div>
