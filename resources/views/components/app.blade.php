@@ -16,4 +16,6 @@
             </div>
         </main>
     </section>
+{{--            {{$script}}--}}
+
 </x-master>

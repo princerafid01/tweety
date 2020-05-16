@@ -1,12 +1,14 @@
 <div class="border border-blue-400 rounded-lg px-8 py-6 mb-8">
     <form method="POST" action="/tweets">
         @csrf
+        <span class="mb-3 grey">255/<span id="word_left">255</span></span>
 
         <textarea
             name="body"
-            class="w-full"
+            class="w-full tweet-textarea"
             placeholder="What's up doc?"
             required
+            maxlength="255"
         ></textarea>
 
         <hr class="my-4">
